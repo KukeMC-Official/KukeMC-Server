@@ -62,6 +62,22 @@
             overflow: visible; /* 允许内容溢出 */
         }
 
+        /* 最后更新时间样式 */
+        .last-update {
+            color: #ffffff;
+            font-size: 1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            padding: 10px 20px;
+            display: inline-block;
+            margin: 0 auto 20px auto;
+            text-align: center;
+        }
+
         /* 玩家列表布局 */
         .player-list {
             display: flex;
@@ -236,6 +252,9 @@
                         0 0 90px rgba(81, 203, 238, 1),
                         0 0 100px rgba(81, 203, 238, 1);
                       text-align: center;" id="playerCount">正在加载...</h4>
+                        <div class="last-update-container" style="text-align: center;">
+                            <div id="lastUpdate" class="last-update"></div>
+                        </div>
                         <div class="player-list" id="playerList"></div>
 
                         <script>
@@ -263,6 +282,12 @@
                                     const playerCountDiv = document.getElementById('playerCount');
                                     const playerListDiv = document.getElementById('playerList');
                                     const textContainer = document.getElementById('textContainer');
+                                    const lastUpdateDiv = document.getElementById('lastUpdate');
+
+                                    // 显示最后更新时间
+                                    if (data.lastUpdate) {
+                                        lastUpdateDiv.textContent = `最后更新: ${data.lastUpdate}`;
+                                    }
 
                                     if (data.players && data.players.length > 0) {
                                         playerCountDiv.textContent = `在线玩家数量：${data.players.length}`;
