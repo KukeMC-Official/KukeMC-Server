@@ -158,7 +158,7 @@ $(document).ready(function () {
 
                         row.append($('<td>').attr('data-rank', rank).text('#' + rank));
                         let playerCell = $('<td>').addClass('player-cell');
-                        let avatar = $('<img>').attr('src', `https://crafthead.net/avatar/${player.username}/40.png`).addClass('player-avatar');
+                        let avatar = $('<img>').attr('src', `https://crafthead.net/helm/${player.username}`).addClass('player-avatar');
                         // 添加错误处理，当头像加载失败时使用默认图片
                         avatar.on('error', function() {
                             $(this).attr('src', 'static/image/steve.png');
