@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    // 加载页脚
-    $("#footer").load("footer.html");
 
     // 初始变量
     let currentPage = 1;
@@ -241,51 +239,48 @@ $(document).ready(function () {
     }
 
     // 初始化页面
-    $(document).ready(function () {
-        // 初始化时间筛选按钮
-        $(".time-filter .btn").click(function () {
-            $(".time-filter .btn").removeClass("active");
-            $(this).addClass("active");
+    // 初始化时间筛选按钮
+    $(".time-filter .btn").click(function () {
+        $(".time-filter .btn").removeClass("active");
+        $(this).addClass("active");
 
-            // 更新时间范围
-            currentDays = parseInt($(this).data("days"));
+        // 更新时间范围
+        currentDays = parseInt($(this).data("days"));
+        currentPage = 1;
+        loadRankingData();
+    });
+
+    // 初始化搜索框
+    $("#searchInput").off('input').on("input", function () {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            searchQuery = $(this).val().trim();
             currentPage = 1;
             loadRankingData();
-        });
+        }, 500);
+    });
 
-        // 初始化搜索框
-        let searchTimeout;
-        $("#searchInput").off('input').on("input", function () {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                searchQuery = $(this).val().trim();
-                currentPage = 1;
-                loadRankingData();
-            }, 500);
-        });
+    // 加载初始数据
+    loadRankingData();
 
-        // 加载初始数据
-        loadRankingData();
+    // 加载统计概览数据
+    $.ajax({
+        url: "https://api.kuke.ink/api/playtime/overview",
+        type: "GET",
+        dataType: "json",
+        success: function (response) {
+            if (response.success) {
+                $("#totalPlayers").text(response.total_players);
+                $("#todayOnline").text(response.today_online);
+                $("#activePlayers").text(response.active_players);
 
-        // 加载统计概览数据
-        $.ajax({
-            url: "https://api.kuke.ink/api/playtime/overview",
-            type: "GET",
-            dataType: "json",
-            success: function (response) {
-                if (response.success) {
-                    $("#totalPlayers").text(response.total_players);
-                    $("#todayOnline").text(response.today_online);
-                    $("#activePlayers").text(response.active_players);
-
-                    // 格式化总在线时长
-                    let totalHours = Math.floor(response.total_playtime / 3600);
-                    $("#totalPlaytime").text(totalHours + '小时');
-                }
-            },
-            error: function () {
-                $(".stats-card .number").text('加载失败');
+                // 格式化总在线时长
+                let totalHours = Math.floor(response.total_playtime / 3600);
+                $("#totalPlaytime").text(totalHours + '小时');
             }
-        });
+        },
+        error: function () {
+            $(".stats-card .number").text('加载失败');
+        }
     });
 });

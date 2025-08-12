@@ -32,69 +32,75 @@
     <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
     <style>
         body {
-            background-image: url('https://m.ccw.site/gandi_application/user_assets/d0f388db855c64d2be3d3d8adfef3698.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://m.ccw.site/gandi_application/user_assets/afd303fd83c3587ca97b3c59edcd3c9b.png');
             background-size: 100% auto;
             background-repeat: no-repeat;
             background-position: top center;
             background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .text-container-2 {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(30, 30, 30, 0.7);
             padding: 30px;
             margin: 15px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(80, 80, 80, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             min-height: 300px;
+            max-height: none;
+            overflow: visible;
+            flex: 1;
         }
 
         .upload-area {
-            border: 2px dashed #ff80ab;
+            border: 2px dashed #39ad66;
             border-radius: 10px;
             padding: 30px;
             text-align: center;
             margin: 20px 0;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(40, 40, 40, 0.7);
             transition: all 0.3s;
             cursor: pointer;
         }
         
         .upload-instructions {
             color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             font-size: 1em;
         }
         
         .page-instructions {
             color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             font-size: 1.1em;
             line-height: 1.6;
         }
 
         .upload-area:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #ff66a3;
+            background: rgba(50, 50, 50, 0.8);
+            border-color: #2ecc71;
         }
 
         .upload-area.dragover {
-            background: rgba(255, 128, 171, 0.2);
-            border-color: #ff4da6;
+            background: rgba(46, 204, 113, 0.2);
+            border-color: #27ae60;
         }
 
         .upload-icon {
             font-size: 48px;
-            color: #ff80ab;
+            color: #39ad66;
             margin-bottom: 15px;
         }
         
         .file-info {
             margin-top: 15px;
             font-weight: bold;
-            color: #ff80ab;
+            color: #39ad66;
             display: none;
         }
 
@@ -102,7 +108,7 @@
             display: none;
             margin-top: 20px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(40, 40, 40, 0.7);
             border-radius: 10px;
             text-align: center;
         }
@@ -111,7 +117,7 @@
             max-width: 200px;
             max-height: 200px;
             margin: 10px auto;
-            border: 1px solid #ddd;
+            border: 1px solid #555;
             border-radius: 5px;
         }
         
@@ -131,20 +137,21 @@
         .preview-spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
-            border-top: 4px solid #ff80ab;
+            border-top: 4px solid #39ad66;
             width: 30px;
             height: 30px;
             animation: spin 1s linear infinite;
         }
         
         .command-box {
-            background: #f8f9fa;
+            background: rgba(50, 50, 50, 0.8);
             border-radius: 5px;
             padding: 15px;
             margin: 15px 0;
             font-family: monospace;
             word-break: break-all;
-            border: 1px solid #dee2e6;
+            border: 1px solid rgba(80, 80, 80, 0.5);
+            color: #ffffff;
         }
 
         .copy-btn, .upload-another-btn {
@@ -153,18 +160,18 @@
 
         .result-container p {
             color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             font-size: 1.1em;
             margin: 10px 0;
         }
 
         .result-container h4 {
             color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .error-message {
-            color: #dc3545;
+            color: #e74c3c;
             font-weight: bold;
             margin: 10px 0;
             display: none;
@@ -176,10 +183,28 @@
             margin: 20px 0;
         }
 
+        .upload-loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            width: 100%;
+        }
+
+        .upload-loading-container .spinner {
+            margin-bottom: 20px;
+        }
+
+        .upload-loading-container p {
+            margin: 0;
+            text-align: center;
+        }
+
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
-            border-top: 4px solid #ff80ab;
+            border-top: 4px solid #39ad66;
             width: 30px;
             height: 30px;
             animation: spin 1s linear infinite;
@@ -187,20 +212,134 @@
         }
 
         @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 修复加载动画问题 */
+        .spinner-wrapper {
+            position: fixed;
+            z-index: 999999;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+            -moz-transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+            transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+        }
+
+        .spinner-wrapper .spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -15px 0 0 -15px;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #39ad66;
+            border-radius: 50%;
+            border-top-color: transparent;
+            -webkit-animation: spinner 0.8s ease-in-out infinite;
+            -moz-animation: spinner 0.8s ease-in-out infinite;
+            animation: spinner 0.8s ease-in-out infinite;
+        }
+
+        @-webkit-keyframes spinner {
+            to {-webkit-transform: rotate(360deg);}
+        }
+
+        @-moz-keyframes spinner {
+            to {-moz-transform: rotate(360deg);}
+        }
+
+        @keyframes spinner {
+            to {transform: rotate(360deg);}
+        }
+
+        /* 页面加载完成后隐藏预加载动画 */
+        .loaded .spinner-wrapper {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* 页面加载时显示预加载动画 */
+        .loading .spinner-wrapper {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 修改按钮样式，使用绿色主题 */
+        .btn-solid-lg {
+            display: inline-block;
+            padding: 1.2rem 2.2rem;
+            border: 0.125rem solid #39ad66;
+            border-radius: 2rem;
+            background-color: #39ad66;
+            color: #fff;
+            font: 700 0.85rem/0 "Montserrat", sans-serif;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(57, 173, 102, 0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 10px;
+        }
+
+        .btn-solid-lg:hover {
+            background-color: transparent;
+            color: #39ad66;
+            text-decoration: none;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(57, 173, 102, 0.4);
+        }
+
+        .btn-solid-lg:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 6px rgba(57, 173, 102, 0.2);
+        }
+
+        .btn-solid-lg::after {
+            content: "";
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: -1;
+            transition: transform 0.6s, opacity 0.6s;
+        }
+
+        .btn-solid-lg:hover::after {
+            transform: translate(-50%, -50%) scale(3);
+            opacity: 1;
+        }
+        
+        /* 页面主体布局 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 页脚样式 */
+        #footer {
+            margin-top: auto;
         }
     </style>
 </head>
-<body data-spy="scroll" data-target=".fixed-top">
+<body data-spy="scroll" data-target=".fixed-top" class="loading">
     
     <!-- Preloader -->
 	<div class="spinner-wrapper">
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
+        <div class="spinner"></div>
     </div>
     <!-- end of preloader -->
     
@@ -220,24 +359,8 @@
     </header> <!-- end of ex-header -->
     <!-- end of header -->
 
-
-    <!-- Breadcrumbs -->
-    <div class="ex-basic-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumbs">
-                        <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i><span>皮肤上传</span>
-                    </div> <!-- end of breadcrumbs -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of ex-basic-1 -->
-    <!-- end of breadcrumbs -->
-
-
     <!-- Terms Content -->
-    <div class="ex-basic-2">
+    <div class="ex-basic-2 main-content">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -247,9 +370,11 @@
                         
                         <div class="error-message" id="errorMessage"></div>
                         
-                        <div class="loading" id="loading">
-                            <div class="spinner"></div>
-                            <p>正在上传皮肤，请稍候...</p>
+                        <div class="loading" id="uploadLoading">
+                            <div class="upload-loading-container">
+                                <div class="spinner"></div>
+                                <p>正在上传皮肤，请稍候...</p>
+                            </div>
                         </div>
                         
                         <form id="skinUploadForm">
@@ -311,15 +436,36 @@
 
     <script>
         $(document).ready(function() {
-            // 加载导航栏和页脚
-            $("#navbar-placeholder").load("navbar.html");
-            $("#footer-placeholder").load("footer.html");
+            
+            // 确保页脚在页面底部
+            function adjustFooterPosition() {
+                const body = document.body;
+                const html = document.documentElement;
+                const height = Math.max(
+                    body.scrollHeight,
+                    body.offsetHeight,
+                    html.clientHeight,
+                    html.scrollHeight,
+                    html.offsetHeight
+                );
+                
+                if (height <= window.innerHeight) {
+                    document.body.style.minHeight = '100vh';
+                    document.body.style.display = 'flex';
+                    document.body.style.flexDirection = 'column';
+                    document.querySelector('.main-content').style.flex = '1';
+                    document.getElementById('footer').style.marginTop = 'auto';
+                }
+            }
+            
+            // 页面加载完成后调整页脚位置
+            setTimeout(adjustFooterPosition, 100);
             
             const uploadArea = document.getElementById('uploadArea');
             const fileInput = document.getElementById('skinFile');
             const form = document.getElementById('skinUploadForm');
             const errorMessage = document.getElementById('errorMessage');
-            const loading = document.getElementById('loading');
+            const loading = document.getElementById('uploadLoading');
             const resultContainer = document.getElementById('resultContainer');
             const skinPreview = document.getElementById('skinPreview');
             const commandBox = document.getElementById('commandBox');
@@ -420,6 +566,8 @@
                         previewLoading.style.display = 'none';
                         skinPreview.style.display = 'block';
                         skinPreview.src = imageUrl;
+                        // 上传完成后重新调整页脚位置
+                        adjustFooterPosition();
                     };
                     img.src = imageUrl;
                     
