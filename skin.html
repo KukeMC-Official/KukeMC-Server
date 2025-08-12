@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3KHLjg97pxmoUlOB",ck:"3KHLjg97pxmoUlOB"})</script>
+<script>
+  !(function(c,i,e,b){
+  var h=i.createElement("script");
+  var f=i.getElementsByTagName("script")[0];
+  h.type="text/javascript";
+  h.crossorigin=true;
+  h.onload=function(){new c[b]["Monitor"]().init({id:"3MZgcESuGaKEZn2w",sendSuspicious:true,sendSpaPv:true});};
+  f.parentNode.insertBefore(h,f);h.src=e;})(window,document,"https://sdk.51.la/perf/js-sdk-perf.min.js","LingQue");
+</script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="KukeMC皮肤上传页面，玩家可以在此上传自定义皮肤并获取游戏指令">
+    <meta name="author" content="KukeMC">
+
+    <!-- Website Title -->
+    <title>皮肤上传-KukeMC-我的世界服务器(Minecraft)</title>
+    
+    <!-- Styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+    <link href="static/css/animations.css" rel="stylesheet">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
+    <style>
+        body {
+            background-image: url('https://m.ccw.site/gandi_application/user_assets/d0f388db855c64d2be3d3d8adfef3698.jpg');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+        }
+
+        .text-container-2 {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 30px;
+            margin: 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            min-height: 300px;
+        }
+
+        .upload-area {
+            border: 2px dashed #ff80ab;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .upload-instructions {
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            font-size: 1em;
+        }
+        
+        .page-instructions {
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .upload-area:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ff66a3;
+        }
+
+        .upload-area.dragover {
+            background: rgba(255, 128, 171, 0.2);
+            border-color: #ff4da6;
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #ff80ab;
+            margin-bottom: 15px;
+        }
+        
+        .file-info {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ff80ab;
+            display: none;
+        }
+
+        .result-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .skin-preview {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .skin-preview-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .preview-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        
+        .preview-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #ff80ab;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        
+        .command-box {
+            background: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            word-break: break-all;
+            border: 1px solid #dee2e6;
+        }
+
+        .copy-btn, .upload-another-btn {
+            margin-top: 10px;
+        }
+
+        .result-container p {
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .result-container h4 {
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-weight: bold;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #ff80ab;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+    <!-- end of navbar -->
+
+
+    <!-- Header -->
+    <header id="header" class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>皮肤上传</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+
+
+    <!-- Breadcrumbs -->
+    <div class="ex-basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs">
+                        <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i><span>皮肤上传</span>
+                    </div> <!-- end of breadcrumbs -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of breadcrumbs -->
+
+
+    <!-- Terms Content -->
+    <div class="ex-basic-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-container-2">
+                        <h3>上传您的皮肤</h3>
+                        <p class="page-instructions">在这里您可以上传自定义的Minecraft皮肤，系统会自动生成游戏内指令，您只需复制并在游戏中执行即可更换皮肤。</p>
+                        
+                        <div class="error-message" id="errorMessage"></div>
+                        
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p>正在上传皮肤，请稍候...</p>
+                        </div>
+                        
+                        <form id="skinUploadForm">
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-icon">📁</div>
+                                <h4>点击选择皮肤文件或拖拽到此处</h4>
+                                <p class="upload-instructions">支持PNG、JPG、JPEG格式，建议尺寸为64x32或64x64像素</p>
+                                <input type="file" id="skinFile" accept="image/*" style="display: none;">
+                                <div class="file-info" id="fileInfo"></div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-solid-lg" id="uploadButton" disabled>上传皮肤</button>
+                            </div>
+                        </form>
+                        
+                        <div class="result-container" id="resultContainer">
+                            <h4>上传成功!</h4>
+                            <p>您的皮肤已成功上传，请在游戏中执行以下指令：</p>
+                            
+                            <div class="skin-preview-container">
+                                <p>皮肤预览：</p>
+                                <div style="position: relative; display: inline-block;">
+                                    <img id="skinPreview" class="skin-preview" src="" alt="皮肤预览">
+                                    <div class="preview-loading" id="previewLoading">
+                                        <div class="preview-spinner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="command-box" id="commandBox">
+                                /skin url ""
+                            </div>
+                            
+                            <button class="btn-solid-lg copy-btn" id="copyButton">复制指令</button>
+                            <button class="btn-solid-lg upload-another-btn" id="uploadAnother">再次上传</button>
+                        </div>
+                    </div> <!-- end of text-container -->
+                </div>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-2 -->
+    <!-- end of terms content -->
+
+    
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- end of footer -->
+
+
+    <!-- Scripts -->
+    <script src="static/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="static/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="static/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="static/js/jquery.magnific-popup.min.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="static/js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="static/js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="static/js/clipboard.min.js"></script> <!-- Clipboard.js for copy functionality -->
+    <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
+
+    <script>
+        $(document).ready(function() {
+            // 加载导航栏和页脚
+            $("#navbar-placeholder").load("navbar.html");
+            $("#footer-placeholder").load("footer.html");
+            
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('skinFile');
+            const form = document.getElementById('skinUploadForm');
+            const errorMessage = document.getElementById('errorMessage');
+            const loading = document.getElementById('loading');
+            const resultContainer = document.getElementById('resultContainer');
+            const skinPreview = document.getElementById('skinPreview');
+            const commandBox = document.getElementById('commandBox');
+            const copyButton = document.getElementById('copyButton');
+            const uploadAnother = document.getElementById('uploadAnother');
+            const fileInfo = document.getElementById('fileInfo');
+            const uploadButton = document.getElementById('uploadButton');
+            
+            // 点击上传区域选择文件
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // 文件选择后的处理
+            fileInput.addEventListener('change', function() {
+                if (this.files.length) {
+                    const file = this.files[0];
+                    fileInfo.textContent = `已选择文件: ${file.name}`;
+                    fileInfo.style.display = 'block';
+                    uploadButton.disabled = false;
+                } else {
+                    fileInfo.style.display = 'none';
+                    uploadButton.disabled = true;
+                }
+            });
+            
+            // 拖拽上传功能
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    // 触发change事件以更新文件信息
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+            
+            // 表单提交处理
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!fileInput.files.length) {
+                    showError('请选择一个皮肤文件');
+                    return;
+                }
+                
+                const file = fileInput.files[0];
+                if (!file.type.match('image.*')) {
+                    showError('请选择一个有效的图片文件');
+                    return;
+                }
+                
+                uploadSkin(file);
+            });
+            
+            // 上传皮肤函数
+            function uploadSkin(file) {
+                // 显示加载状态
+                hideError();
+                loading.style.display = 'block';
+                form.style.display = 'none';
+                
+                const formData = new FormData();
+                formData.append('image', file);
+                
+                fetch('https://img-api.kuke.ink/raw', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('上传失败');
+                    }
+                    return response.text();
+                })
+                .then(imageUrl => {
+                    // 显示结果
+                    // 在加载图片时显示加载动画
+                    const previewLoading = document.getElementById('previewLoading');
+                    previewLoading.style.display = 'block';
+                    skinPreview.style.display = 'none';
+                    
+                    // 创建一个新的图片对象来监听加载事件
+                    const img = new Image();
+                    img.onload = function() {
+                        // 图片加载完成后隐藏加载动画并显示图片
+                        previewLoading.style.display = 'none';
+                        skinPreview.style.display = 'block';
+                        skinPreview.src = imageUrl;
+                    };
+                    img.src = imageUrl;
+                    
+                    commandBox.textContent = `/skin url "${imageUrl}"`;
+                    loading.style.display = 'none';
+                    resultContainer.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('上传错误:', error);
+                    loading.style.display = 'none';
+                    form.style.display = 'block';
+                    showError('皮肤上传失败，请稍后重试');
+                });
+            }
+            
+            // 复制指令功能
+            const clipboard = new ClipboardJS(copyButton, {
+                text: function() {
+                    return commandBox.textContent;
+                }
+            });
+            
+            clipboard.on('success', function(e) {
+                const originalText = copyButton.textContent;
+                copyButton.textContent = '已复制!';
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                }, 2000);
+                e.clearSelection();
+            });
+            
+            // 重新上传功能
+            uploadAnother.addEventListener('click', () => {
+                resultContainer.style.display = 'none';
+                form.style.display = 'block';
+                fileInput.value = '';
+                fileInfo.style.display = 'none';
+                uploadButton.disabled = true;
+            });
+            
+            // 错误处理函数
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+            }
+            
+            function hideError() {
+                errorMessage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
