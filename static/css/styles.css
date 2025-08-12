@@ -1810,11 +1810,12 @@ a:hover.back-to-top {
 .ex-header h1 {
 	color: #fff;
 }
-
 .ex-basic-1 {
-	padding-top: 2rem;
-	padding-bottom: 0.875rem;
-	background-color: #fbfbfb;
+    padding-top: 2rem;
+    padding-bottom: 0.875rem;
+    background-color: #fbfbfb;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari 兼容 */
 }
 
 .ex-basic-1 .breadcrumbs {

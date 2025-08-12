@@ -34,9 +34,19 @@
             .replace(/^\/+/, '');         // 移除前导斜杠
     
         // 更新导航高亮状态的函数
-        function updateNavHighlight() {
+        function updateNavHighlight(retryCount = 0) {
+            // 确保导航链接元素存在
+            const navLinks = document.querySelectorAll('.nav-link');
+            if (navLinks.length === 0) {
+                // 如果导航链接还未加载完成，等待一段时间后重试，最多重试10次
+                if (retryCount < 10) {
+                    setTimeout(() => updateNavHighlight(retryCount + 1), 100);
+                }
+                return;
+            }
+            
             // 移除所有导航项的高亮
-            document.querySelectorAll('.nav-link').forEach(link => {
+            navLinks.forEach(link => {
                 link.classList.remove('active');
             });
             
@@ -50,14 +60,14 @@
                 const hash = window.location.hash;
                 if (hash) {
                     // 根据hash值确定应该高亮的导航项
-                    document.querySelectorAll('.nav-link').forEach(link => {
+                    navLinks.forEach(link => {
                         if (link.getAttribute('href') === `index.html${hash}`) {
                             link.classList.add('active');
                         }
                     });
                 } else {
                     // 如果没有hash，默认高亮首页
-                    document.querySelectorAll('.nav-link').forEach(link => {
+                    navLinks.forEach(link => {
                         if (link.getAttribute('href') === 'index.html#header' || 
                             link.getAttribute('href') === 'index.html' ||
                             link.getAttribute('href') === '#header') {
@@ -67,7 +77,8 @@
                 }
             } else {
                 // 非主页的处理逻辑
-                document.querySelectorAll('.nav-link').forEach(link => {
+                let matched = false;
+                navLinks.forEach(link => {
                     try {
                         // 处理外部链接，如状态监控和官方文档
                         if (link.getAttribute('href').startsWith('http')) {
@@ -86,6 +97,7 @@
                             // 对于锚点链接，在主页时应该高亮第一个锚点链接（首页）
                             if (normalizedCurrentPath === '' && link.getAttribute('href') === '#header') {
                                 link.classList.add('active');
+                                matched = true;
                             }
                             return;
                         }
@@ -101,19 +113,53 @@
                         // 比较两个路径是否匹配
                         if (normalizedLinkPath === normalizedCurrentPath) {
                             link.classList.add('active');
+                            matched = true;
                         }
                     } catch (e) {
                         console.warn('Invalid URL in nav link:', link.href);
                     }
                 });
+                
+                // 如果没有匹配的导航项，尝试使用更宽松的匹配方式
+                if (!matched) {
+                    const currentPage = normalizedCurrentPath.split('/').pop();
+                    navLinks.forEach(link => {
+                        const linkHref = link.getAttribute('href');
+                        if (linkHref && linkHref.includes(currentPage)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
             }
         }
 
         // 初始更新导航高亮状态
         updateNavHighlight();
 
+        // 监听 DOM 变化，确保导航栏正确加载后更新高亮
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    updateNavHighlight();
+                }
+            });
+        });
+
+        // 配置观察选项
+        const config = { childList: true, subtree: true };
+        
+        // 传入目标节点和观察选项
+        observer.observe(document.getElementById('navbar'), config);
+
         // 监听 hashchange 事件（当用户点击锚点链接时触发）
         window.addEventListener('hashchange', updateNavHighlight);
+        
+        // 监听页面加载完成事件
+        window.addEventListener('load', function() {
+            // 延迟执行以确保所有内容加载完成
+            setTimeout(updateNavHighlight, 100);
+            setTimeout(updateNavHighlight, 500);
+        });
         
         // 监听滚动事件，实现智能高亮（仅在主页时）
         if (normalizedCurrentPath === '' || normalizedCurrentPath === 'index') {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id:"3KHLjg97pxmoUlOB",ck:"3KHLjg97pxmoUlOB"})</script>
 <script>
@@ -23,7 +23,29 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f0f2f5;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://m.ccw.site/gandi_application/user_assets/afd303fd83c3587ca97b3c59edcd3c9b.png');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-container-2 {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 30px;
+            margin: 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 80, 80, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            min-height: 300px;
+            max-height: none;
+            overflow: visible;
+            flex: 1;
         }
 
         .message-list {
@@ -33,15 +55,16 @@
         }
 
         .message-item {
-            background: #ffffff;
+            background: rgba(40, 40, 40, 0.8);
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             padding: 12px;
             margin-bottom: 12px;
             display: flex;
             gap: 12px;
             transition: transform 0.2s;
             flex-wrap: wrap;
+            border: 1px solid rgba(80, 80, 80, 0.5);
         }
 
         @media (max-width: 480px) {
@@ -53,6 +76,7 @@
 
         .message-item:hover {
             transform: translateY(-2px);
+            background: rgba(50, 50, 50, 0.9);
         }
 
         .avatar {
@@ -60,10 +84,10 @@
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
-            background: #e4e6eb;
+            background: #2d2d2d;
             flex-shrink: 0;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 2px solid #444;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .message-content {
@@ -96,7 +120,7 @@
         }
         .username {
             font-weight: 600;
-            color: #1d2129;
+            color: #ffffff;
             font-size: 15px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -107,7 +131,7 @@
         }
 
         .message-id {
-            color: #8a8f99;
+            color: #aaa;
             font-size: 12px;
             margin-left: 6px;
             display: inline-block;
@@ -123,7 +147,7 @@
         }
 
         .message-text {
-            color: #4e5969;
+            color: #ddd;
             line-height: 1.5;
             margin: 6px 0;
             white-space: pre-wrap;
@@ -142,7 +166,7 @@
         }
 
         .message-time {
-            color: #8a8f99;
+            color: #aaa;
             font-size: 12px;
             text-align: right;
             white-space: nowrap;
@@ -159,7 +183,7 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #8a8f99;
+            color: #ccc;
             font-size: 14px;
         }
 
@@ -172,7 +196,8 @@
         .admin-bar {
             max-width: 800px;
             margin: 0 auto;
-            padding-bottom: 1.75rem;
+            padding: 20px 0;
+            text-align: center;
         }
         
         /* 管理员登录按钮 */
@@ -187,7 +212,7 @@
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             box-shadow: 0 2px 6px rgba(76, 175, 80, 0.2);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
@@ -286,6 +311,60 @@
             margin-bottom: 5px;
         }
         
+        .message-wrapper {
+            position: relative;
+        }
+        
+        .level-indicator {
+            position: absolute;
+            left: -15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(120, 120, 120, 0.5);
+        }
+        
+        .ex-header {
+            background-color: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 80, 80, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+        
+        .ex-header h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ex-header h5 {
+            color: #ddd;
+        }
+        
+        .breadcrumbs {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 80, 80, 0.5);
+        }
+        
+        .breadcrumbs a {
+            color: #39ad66;
+            text-decoration: none;
+        }
+        
+        .breadcrumbs span {
+            color: #ccc;
+        }
+
+        .ex-basic-1 {
+            background-color: rgba(0, 0, 0, 0.18);
+        }
+
     </style>
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
@@ -306,7 +385,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>KukeMC - 玩家留言</h1>
-                    <h5 style="color: #fff;">在游戏内使用 “/lmsg <内容>” 留言</h5>
+                    <h5 style="color: #fff;">在游戏内使用 "/lmsg &lt;内容&gt;" 留言</h5>
                 </div>
             </div>
         </div>
@@ -330,14 +409,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="text-container">
+                    <div class="text-container-2">
 
                         <div class="message-list" id="messageContainer">
                             <div class="loading">正在加载留言...</div>
                         </div>
 
                         <div class="admin-bar">
-                            <button class="admin-btn" id="adminLogin">admin</button>
+                            <button class="admin-btn" id="adminLogin">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 5px;">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                </svg>
+                                管理员登录
+                            </button>
                         </div>
                     
                         <script>
@@ -441,6 +525,7 @@
                             function createMessageElement(message) {
                                 const element = document.createElement('div');
                                 element.className = 'message-item' + (message.parent_id ? ' reply-item' : '');
+                                element.id = `msg-${message.id}`;
                                 
                                 const adminKey = localStorage.getItem(ADMIN_KEY_STORAGE);
                                 const showDelete = adminKey !== null;
@@ -450,7 +535,7 @@
 
                                 // 添加回复标识
                                 const replyIndicator = message.parent_id ? 
-                                    `<span class="reply-to">> 回复 <a href="#msg-${message.parent_id}">#${message.parent_id}</a></span>` : 
+                                    `<span class="reply-to">> 回复 <a href="#msg-${message.parent_id}" style="color: #39ad66;">#${message.parent_id}</a></span>` : 
                                     '';
 
                                 element.innerHTML = `
@@ -569,7 +654,6 @@
                             // 每60秒自动刷新
                             setInterval(loadMessages, 60000);
                         </script>
-                        <br><br><br><br><br><br>
                     </div>
                 </div>
             </div>
@@ -591,23 +675,3 @@
     <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
 </body>
 </html>
-
-.level-indicator {
-    position: absolute;
-    left: -10px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: #e4e6eb;
-}
-
-.message-wrapper {
-    position: relative;
-    margin-bottom: 8px;
-}
-
-@media (max-width: 480px) {
-    .message-wrapper {
-        margin-left: 10px !important;
-    }
-}

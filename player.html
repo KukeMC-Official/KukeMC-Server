@@ -246,6 +246,43 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
+        .breadcrumbs {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 80, 80, 0.5);
+        }
+        
+        .breadcrumbs a {
+            color: #39ad66;
+            text-decoration: none;
+        }
+        
+        .breadcrumbs span {
+            color: #ccc;
+        }
+
+        .ex-basic-1 {
+            background-color: rgba(0, 0, 0, 0.18);
+        }
+
+        .ex-header {
+            background-color: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 80, 80, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+        
+        .ex-header h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body data-spy="scroll" data-target=".fixed-top"">
@@ -275,6 +312,20 @@
         </div> <!-- end of container -->
     </header> <!-- end of ex-header -->
     <!-- end of header -->
+
+    <!-- Breadcrumbs -->
+    <div class="ex-basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs">
+                        <a href="index.html">首页</a><span>&nbsp;&nbsp;>&nbsp;&nbsp;在线玩家</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of breadcrumbs -->
 
     <!-- Terms Content -->
     <div class="ex-basic-2">
