@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             row.innerHTML = `
                 <td><span class="ban-type">封禁</span></td>
                 <td>
-                    <img src="https://crafthead.net/avatar/${ban.name}" 
+                    <img src="https://crafthead.net/helm/${ban.name}" 
                          alt="${ban.name}'s avatar" 
                          class="avatar" 
                          style="margin-top: 3px; margin-bottom: 1px;" 
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>
                     ${ban.source === '控制台'
                         ? `<img src="https://m.ccw.site/gandi_application/user_assets/b23d1f215b69e9782b51a2a324b9469e.png" alt="${ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;"><br>${ban.source}`
-                        : `<img src="https://crafthead.net/avatar/${ban.banned_by_name || ban.source}" alt="${ban.banned_by_name || ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;" onerror="this.src='https://m.ccw.site/gandi_application/user_assets/b23d1f215b69e9782b51a2a324b9469e.png'; this.onerror=null;"><br>${ban.banned_by_name || ban.source}`
+                        : `<img src="https://crafthead.net/helm/${ban.banned_by_name || ban.source}" alt="${ban.banned_by_name || ban.source}" class="avatar" style="margin-top: 3px; margin-bottom: 1px;" onerror="this.src='https://m.ccw.site/gandi_application/user_assets/b23d1f215b69e9782b51a2a324b9469e.png'; this.onerror=null;"><br>${ban.banned_by_name || ban.source}`
                     }
                 </td>
                 <td style="max-width: 400px;">KukeMC | ${ban.reason}</td>

@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    // 加载导航栏和页脚
-    $("#navbar").load("navbar.html");
+    // 加载页脚
     $("#footer").load("footer.html");
 
     // 初始变量
