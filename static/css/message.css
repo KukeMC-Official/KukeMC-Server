@@ -336,7 +336,6 @@ body {
 }
 
 .instruction-card h5 {
-    margin: 10px 0 !important;
     font-weight: normal;
 }
 
@@ -346,6 +345,50 @@ body {
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     color: #4CAF50;
+}
+
+/* 指令区域 */
+.instructions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto 0;
+    padding: 0 15px;
+}
+
+/* 指令卡片 */
+.instruction-card {
+    display: flex;
+    align-items: center;
+    background: rgba(40, 40, 40, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.instruction-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+    background: rgba(50, 50, 50, 0.9);
+}
+
+/* 卡片图标 */
+.card-icon {
+    margin-right: 12px;
+    color: #39ad66;
+    flex-shrink: 0;
+}
+
+/* 卡片内容 */
+.card-content h5 {
+    color: #fff;
+    margin: 0;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 .breadcrumbs {
