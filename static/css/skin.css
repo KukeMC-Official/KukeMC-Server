@@ -1,0 +1,339 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://m.ccw.site/gandi_application/user_assets/afd303fd83c3587ca97b3c59edcd3c9b.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-container-2 {
+    background: rgba(30, 30, 30, 0.7);
+    padding: 30px;
+    margin: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    min-height: 300px;
+    max-height: none;
+    overflow: visible;
+    flex: 1;
+}
+
+.upload-area {
+    border: 2px dashed #39ad66;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    margin: 20px 0;
+    background: rgba(40, 40, 40, 0.7);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.upload-instructions {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1em;
+}
+
+.page-instructions {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.upload-area:hover {
+    background: rgba(50, 50, 50, 0.8);
+    border-color: #2ecc71;
+}
+
+.upload-area.dragover {
+    background: rgba(46, 204, 113, 0.2);
+    border-color: #27ae60;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #39ad66;
+    margin-bottom: 15px;
+}
+
+.file-info {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #39ad66;
+    display: none;
+}
+
+.result-container {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(40, 40, 40, 0.7);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.skin-preview {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px auto;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.skin-preview-container {
+    position: relative;
+    display: inline-block;
+}
+
+.preview-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.preview-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #39ad66;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+.command-box {
+    background: rgba(50, 50, 50, 0.8);
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px 0;
+    font-family: monospace;
+    word-break: break-all;
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    color: #ffffff;
+}
+
+.copy-btn, .upload-another-btn {
+    margin-top: 10px;
+}
+
+.result-container p {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.result-container h4 {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-weight: bold;
+    margin: 10px 0;
+    display: none;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+}
+
+.upload-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    width: 100%;
+}
+
+.upload-loading-container .spinner {
+    margin-bottom: 20px;
+}
+
+.upload-loading-container p {
+    margin: 0;
+    text-align: center;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #39ad66;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 修复加载动画问题 */
+.spinner-wrapper {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.spinner-wrapper .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #39ad66;
+    border-radius: 50%;
+    border-top-color: transparent;
+    -webkit-animation: spinner 0.8s ease-in-out infinite;
+    -moz-animation: spinner 0.8s ease-in-out infinite;
+    animation: spinner 0.8s ease-in-out infinite;
+}
+
+@-webkit-keyframes spinner {
+    to {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinner {
+    to {-moz-transform: rotate(360deg);}
+}
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+
+/* 页面加载完成后隐藏预加载动画 */
+.loaded .spinner-wrapper {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 页面加载时显示预加载动画 */
+.loading .spinner-wrapper {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 修改按钮样式，使用绿色主题 */
+.btn-solid-lg {
+    display: inline-block;
+    padding: 1.2rem 2.2rem;
+    border: 0.125rem solid #39ad66;
+    border-radius: 2rem;
+    background-color: #39ad66;
+    color: #fff;
+    font: 700 0.85rem/0 "Montserrat", sans-serif;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(57, 173, 102, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 10px;
+}
+
+.btn-solid-lg:hover {
+    background-color: transparent;
+    color: #39ad66;
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(57, 173, 102, 0.4);
+}
+
+.btn-solid-lg:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(57, 173, 102, 0.2);
+}
+
+.btn-solid-lg::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: -1;
+    transition: transform 0.6s, opacity 0.6s;
+}
+
+.btn-solid-lg:hover::after {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+}
+
+/* 页面主体布局 */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 页脚样式 */
+#footer {
+    margin-top: auto;
+}
+
+.breadcrumbs {
+    background: rgba(30, 30, 30, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    text-align: left;
+}
+
+.breadcrumbs a {
+    color: #39ad66;
+    text-decoration: none;
+}
+
+.breadcrumbs span {
+    color: #ccc;
+}
+
+.ex-basic-1 {
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.ex-header {
+    background-color: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+.ex-header h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}

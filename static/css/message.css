@@ -1,0 +1,343 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://m.ccw.site/gandi_application/user_assets/afd303fd83c3587ca97b3c59edcd3c9b.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-container-2 {
+    background: rgba(30, 30, 30, 0.7);
+    padding: 30px;
+    margin: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    min-height: 300px;
+    max-height: none;
+    overflow: visible;
+    flex: 1;
+}
+
+.message-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.message-item {
+    background: rgba(40, 40, 40, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+    transition: transform 0.2s;
+    flex-wrap: wrap;
+    border: 1px solid rgba(80, 80, 80, 0.5);
+}
+
+@media (max-width: 480px) {
+    .message-item {
+        padding: 10px;
+        gap: 8px;
+    }
+}
+
+.message-item:hover {
+    transform: translateY(-2px);
+    background: rgba(50, 50, 50, 0.9);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #2d2d2d;
+    flex-shrink: 0;
+    border: 2px solid #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message-content {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+    .message-content {
+        width: calc(100% - 48px);
+    }
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+@media (max-width: 480px) {
+    .user-header {
+        flex-direction: column;
+    }
+}
+.username {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    /* 水平居中相关样式 */
+    text-align: center;
+    margin: 0 auto;
+}
+
+.message-id {
+    color: #aaa;
+    font-size: 12px;
+    margin-left: 6px;
+    display: inline-block;
+}
+
+@media (max-width: 480px) {
+    .username {
+        font-size: 14px;
+    }
+    .message-id {
+        margin-left: 4px;
+    }
+}
+
+.message-text {
+    color: #ddd;
+    line-height: 1.5;
+    margin: 6px 0;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 14px;
+    max-width: 100%;
+}
+
+@media (max-width: 480px) {
+    .message-text {
+        font-size: 13px;
+        line-height: 1.4;
+        margin: 4px 0;
+    }
+}
+
+.message-time {
+    color: #aaa;
+    font-size: 12px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .message-time {
+        width: 100%;
+        text-align: left;
+        margin-top: 2px;
+    }
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.error {
+    color: #f56c6c;
+    text-align: center;
+    padding: 20px;
+}
+
+.admin-bar {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* 管理员登录按钮 */
+.admin-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white !important;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.admin-btn:active {
+    transform: translateY(0);
+    filter: brightness(0.9);
+}
+
+/* 删除按钮样式 */
+.delete-btn {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+    color: white !important;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(255, 68, 68, 0.2);
+    position: relative;
+    overflow: hidden;
+    margin-left: 6px;
+}
+
+@media (max-width: 480px) {
+    .delete-btn {
+        padding: 3px 10px;
+        margin-left: 4px;
+        font-size: 11px;
+    }
+}
+
+.delete-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.delete-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
+}
+
+.delete-btn:hover::before {
+    left: 100%;
+}
+
+.delete-btn:active {
+    transform: translateY(0);
+    filter: brightness(0.9);
+}
+
+/* 加载状态提示 */
+.admin-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.9; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0.9; }
+}
+
+.reply-to {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.message-wrapper {
+    position: relative;
+}
+
+.level-indicator {
+    position: absolute;
+    left: -15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(120, 120, 120, 0.5);
+}
+
+.ex-header {
+    background-color: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+.ex-header h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ex-header h5 {
+    color: #ddd;
+}
+
+.breadcrumbs {
+    background: rgba(30, 30, 30, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+}
+
+.breadcrumbs a {
+    color: #39ad66;
+    text-decoration: none;
+}
+
+.breadcrumbs span {
+    color: #ccc;
+}
+
+.ex-basic-1 {
+    background-color: rgba(0, 0, 0, 0.18);
+}

@@ -1,0 +1,243 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://m.ccw.site/gandi_application/user_assets/afd303fd83c3587ca97b3c59edcd3c9b.png'); /* lobby图片 */
+    background-size: 100% auto; /* 调整背景图片宽度与网站宽度一致 */
+    background-repeat: no-repeat; /* 防止背景图片重复 */
+    background-position: top center; /* 背景图片居中显示 */
+    background-attachment: fixed; /* 固定背景图片 */
+}
+
+.text-container-2 {
+    background: rgba(30, 30, 30, 0.7);
+    padding: 30px;
+    margin: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    min-height: 300px;
+    max-height: none; /* 移除最大高度限制 */
+    overflow: visible; /* 允许内容溢出 */
+}
+
+/* 在线玩家标题样式 */
+.online-players-title {
+    color: #ffffff;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.online-players-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #39ad66, transparent);
+    border-radius: 3px;
+}
+
+/* 在线玩家数量样式 */
+.player-count-display {
+    background: rgba(40, 40, 40, 0.8);
+    color: #ffffff;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin: 0 auto 30px auto;
+    display: block;
+    width: fit-content;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(57, 173, 102, 0.5);
+    transition: all 0.3s ease;
+}
+
+.player-count-display:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(50, 50, 50, 0.9);
+}
+
+/* 最后更新时间样式 */
+.last-update {
+    color: #ffffff;
+    font-size: 1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+/* 玩家列表布局 */
+.player-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 玩家卡片样式 */
+.player {
+    background: rgba(30, 30, 30, 0.7); /* 深色半透明背景 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    min-width: 150px;
+    max-width: 220px;
+    width: fit-content;
+    word-wrap: break-word; /* 允许长单词换行 */
+    word-break: break-all; /* 强制换行 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 鼠标悬停效果 */
+.player:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(40, 40, 40, 0.8);
+}
+
+/* 玩家头像容器样式 */
+.player-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+/* 玩家头像样式 */
+.player img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #555;
+    padding: 5px; /* 增加padding以扩大border的视觉效果 */
+    background-color: transparent; /* 确保padding区域透明 */
+    transition: border-color 0.3s;
+}
+
+/* 鼠标悬停头像效果 */
+.player:hover img {
+    border-color: #39ad66;
+}
+
+/* 玩家名称样式 */
+.player-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 限制显示2行 */
+    -webkit-box-orient: vertical;
+    text-align: center;
+}
+
+/* 玩家信息容器 */
+.player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    gap: 5px;
+    width: 100%;
+}
+
+/* 玩家延迟样式 */
+.player-ping {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.ping-good {
+    background-color: rgba(46, 204, 113, 0.3); /* 绿色 */
+    color: #2ecc71;
+}
+
+.ping-medium {
+    background-color: rgba(241, 196, 15, 0.3); /* 黄色 */
+    color: #f1c40f;
+}
+
+.ping-bad {
+    background-color: rgba(231, 76, 60, 0.3); /* 红色 */
+    color: #e74c3c;
+}
+
+/* 服务器信息样式 */
+.player-server {
+    font-size: 0.9em;
+    color: #ffffff;
+    background: rgba(80, 80, 80, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.breadcrumbs {
+    background: rgba(30, 30, 30, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+}
+
+.breadcrumbs a {
+    color: #39ad66;
+    text-decoration: none;
+}
+
+.breadcrumbs span {
+    color: #ccc;
+}
+
+.ex-basic-1 {
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.ex-header {
+    background-color: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+.ex-header h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
