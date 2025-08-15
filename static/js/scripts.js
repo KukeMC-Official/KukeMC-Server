@@ -202,6 +202,11 @@
                         if (visibleHeight > elementHeight / 2) {
                             currentSection = section.link;
                         }
+                        // 特殊处理：如果已经滚动到页面底部且当前元素是最后一个元素
+                        else if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 5 && 
+                                 section.id === sections[sections.length - 1].id) {
+                            currentSection = section.link;
+                        }
                     }
                 }
                 
@@ -230,6 +235,14 @@
                     if (hash) {
                         document.querySelectorAll('.nav-link').forEach(link => {
                             if (link.getAttribute('href') === `index.html${hash}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    } else {
+                        // 当没有匹配到区域且不在页面顶部时，高亮最后一个可见区域
+                        const lastSection = 'index.html#picture';
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            if (link.getAttribute('href') === lastSection) {
                                 link.classList.add('active');
                             }
                         });
