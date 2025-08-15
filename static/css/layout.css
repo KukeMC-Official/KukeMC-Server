@@ -1,0 +1,1112 @@
+/* Template: Aria - Business HTML Landing Page Template
+   Author: Inovatik
+   Created: Jul 2019
+   Description: Layout CSS file
+*/
+
+/*************************/
+/*     02. Preloader     */
+/*************************/
+.spinner-wrapper {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #00bcd4;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%; /* centers the loading animation vertically one the screen */
+    left: 50%; /* centers the loading animation horizontally one the screen */
+    width: 3.75rem;
+    height: 1.25rem;
+    margin: -0.625rem 0 0 -1.875rem; /* is width and height divided by two */ 
+    text-align: center;
+}
+
+.spinner > div {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: #fff;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0); }
+    40% { -webkit-transform: scale(1.0); }
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+    } 40% { 
+        -webkit-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+
+/*********************/
+/*    04. Header     */
+/*********************/
+.header {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://m.ccw.site/gandi_application/user_assets/d0f388db855c64d2be3d3d8adfef3698.jpg') center center no-repeat; /* lobby 背景图片 */
+    background-size: cover;
+}
+
+.header .header-content {
+    padding-top: 8rem;
+    padding-bottom: 2.125rem;
+    text-align: center;
+}
+
+.header .text-container {
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.header .p-large {
+    margin-top: 1rem;
+    color: #dfe5ec;
+}
+
+.header .btn-solid-lg {
+    margin-right: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+/*********************/
+/*     05. Intro     */
+/*********************/
+.basic-1 {
+    padding-top: 6.5rem;
+    padding-bottom: 3rem;
+}
+
+.basic-1 .text-container {
+    margin-bottom: 3rem;
+}
+
+.basic-1 .section-title {
+    margin-bottom: 0.5rem;
+}
+
+.basic-1 h2 {
+    margin-bottom: 1.375rem;
+}
+
+.basic-1 .testimonial-author {
+    color: #484a46;
+}
+
+/* Hover Animation */
+.basic-1 .image-container {
+    overflow: hidden;
+    border-radius: 0.25rem;
+}
+
+.basic-1 .image-container img {
+    margin: 0;
+    border-radius: 0.25rem;
+    transition: all 0.3s;
+}
+
+.basic-1 .image-container:hover img {
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+} 
+/* end of hover animation */
+
+/***************************/
+/*     06. Description     */
+/***************************/
+.cards-1 {
+    padding-top: 3rem;
+    padding-bottom: 2.875rem;
+}
+
+.cards-1 .card {
+    margin-bottom: 2.5rem;
+    border: none;
+    text-align: center;
+}
+
+.cards-1 .fa-stack {
+    width: 6rem;
+    height: 6rem;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    line-height: 6rem;
+    text-align: left;
+}
+
+.cards-1 .fa-stack .hexagon {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    background-size: 6rem 6rem;
+}
+
+.cards-1 .fa-stack-1x {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.cards-1 .card-body {
+    padding: 0;
+}
+
+.cards-1 .card-title {
+    margin-bottom: 0.625rem;
+}
+
+/************************/
+/*     07. Services     */
+/************************/
+.cards-2 {
+    padding-top: 6.625rem;    
+    padding-bottom: 1.25rem;    
+    background-color: #fbfbfb;
+}
+
+.cards-2 .section-title {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.cards-2 h2 {
+    margin-bottom: 3.25rem;
+    text-align: center;
+}
+
+.cards-2 .card {
+    margin-bottom: 5.625rem;
+    border: none;
+    background-color: transparent;
+}
+
+.cards-2 .card-image img {
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+}
+
+.cards-2 .card-body {
+    padding: 2.25rem 2rem 2.125rem 2rem;
+    border: 1px solid #ebe8e8;
+    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    background-color: #fff;
+}
+
+.cards-2 h3 {
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.cards-2 .list-unstyled {
+    margin-bottom: 1.5rem;
+}
+
+.cards-2 .list-unstyled .fas {
+    color: #ff80ab;
+    font-size: 0.5rem;
+    line-height: 1.375rem;
+}
+
+.cards-2 .list-unstyled .media-body {
+    margin-left: 0.625rem;
+}
+
+.cards-2 .price {
+    margin-bottom: 0.25rem;
+    color: #484a46;
+    font: 700 1rem/1.5rem "Montserrat", sans-serif;
+    text-align: center;
+}
+
+.cards-2 .price span {
+    color: #ff80ab;
+}
+
+.cards-2 .button-container {
+    margin-top: -1.375rem;
+    text-align: center;
+}
+
+.cards-2 .btn-solid-reg:hover {
+    background-color: #fff;
+}
+
+/*************************/
+/*     08. Details 1     */
+/*************************/
+.accordion .area-1 {
+    height: 27rem;
+    background: url('https://m.ccw.site/gandi_application/user_assets/bef229473b6955b392bd809092fcb71f.jpg') center center no-repeat; /* npc 背景图片 */
+    background-size: cover;
+}
+
+.accordion .accordion-container {
+    max-width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 6.375rem;
+    padding-bottom: 1.5rem;
+}
+
+.accordion h2 {
+    margin-bottom: 1.625rem;
+}
+
+.accordion .item {
+    margin-bottom: 2rem;
+}
+
+.accordion h4 {
+    margin-bottom: 0;
+}
+
+.accordion span[aria-expanded="true"] .circle-numbering,
+.accordion span[aria-expanded="false"] .circle-numbering {
+    display: inline-block;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-right: 0.875rem;
+    border: 0.125rem solid #ff80ab;
+    border-radius: 50%;
+    background-color: #ff80ab;
+    color: #fff;
+    font: 700 1rem/2.125rem "Montserrat", sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.accordion span[aria-expanded="false"] .circle-numbering {
+    border: 0.125rem solid #484a46;
+    background-color: transparent;
+    color: #484a46;
+}
+
+.accordion .item:hover span[aria-expanded="false"] .circle-numbering {
+    border: 0.125rem solid #ff80ab;
+    color: #ff80ab;
+}
+
+.accordion .accordion-title {
+    display: inline-block;
+    width: 70%;
+    margin-top: 0.125rem;
+    margin-bottom: 0.25rem;
+    color: #484a46;
+    font: 700 1.25rem/1.75rem "Montserrat", sans-serif;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.accordion .item:hover .accordion-title {
+    color: #ff80ab;
+}
+
+.accordion span[aria-expanded="true"] .accordion-title {
+    color: #ff80ab;
+}
+
+.accordion .accordion-body {
+    margin-left: 3.125rem;
+}
+
+/*************************/
+/*     09. Details 2     */
+/*************************/
+.tabs .tabs-container {
+    max-width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 2rem;
+    padding-bottom: 5.75rem;
+}
+
+.tabs .nav-tabs {
+    justify-content: center;
+    margin-bottom: 1.125rem;
+    border-bottom: none;
+}
+
+.tabs .nav-link {
+    margin-right: 1.625rem;
+    margin-bottom: 0.875rem;
+    padding: 0;
+    border: none;
+    border-radius: 0.25rem;
+    color: #c1cace;
+    font: 700 1.375rem/1.375rem "Montserrat", sans-serif;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.tabs .nav-link:hover,
+.tabs .nav-link.active {
+    color: #ff80ab;
+}
+
+.tabs .nav-link .fas {
+    margin-right: 0.125rem;
+    font-size: 0.875rem;
+    vertical-align: 20%;
+}
+
+.tabs #tab-1 .progress-container {
+    margin-top: 1.5rem;
+}
+
+.tabs #tab-1 .progress-container .title {
+    margin-bottom: 0.25rem;
+    color: #484a46;
+    font: 600 0.875rem/1.25rem "Open Sans", sans-serif;
+}
+
+.tabs #tab-1 .progress {
+    height: 1.375rem;
+    margin-bottom: 1.125rem;
+    border-radius: 0.125rem;
+    background-color: #f9fafc;
+}
+
+.tabs #tab-1 .progress-bar {
+    display: block;
+    padding-left: 1.5rem;
+    border-radius: 0.125rem;
+    background: linear-gradient(to bottom right, #ff80ab, #1bd1a7);
+}
+
+.tabs #tab-1 .progress-bar.first {
+    width: 100%;
+}
+
+.tabs #tab-1 .progress-bar.second {
+    width: 75%;
+}
+
+.tabs #tab-1 .progress-bar.third {
+    width: 90%;
+}
+
+.tabs #tab-2 .list-unstyled {
+    margin-top: 1.75rem;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+.tabs #tab-2 .list-unstyled .media {
+    margin-bottom: 2rem;
+}
+
+.tabs #tab-2 .list-unstyled .media-bullet {
+    color: #ff80ab;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.tabs #tab-2 .list-unstyled .media-body {
+    margin-left: 0.875rem;
+}
+
+.tabs #tab-3 .list-unstyled .fas {
+    color: #ff80ab;
+    font-size: 0.5rem;
+    line-height: 1.375rem;
+}
+
+.tabs #tab-3 .list-unstyled .media-body {
+    margin-left: 0.625rem;
+}
+
+.tabs #tab-3 .list-unstyled {
+    margin-bottom: 1.75rem;
+}
+
+.tabs .area-2 {
+    height: 27rem;
+    background: url('https://m.ccw.site/gandi_application/user_assets/c4b620abbe418db0c58cded246dfc054.jpg') center center no-repeat; /* backend image */
+    background-size: cover;
+}
+
+/****************************/
+/*     10. Testimonials     */
+/****************************/
+.slider {
+    padding-top: 6.375rem;
+    padding-bottom: 6.5rem;
+    background-color: #fbfbfb;
+}
+
+.slider h2 {
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.slider .slider-container {
+    position: relative;
+}
+
+.slider .swiper-container {
+    position: static;
+    width: 90%;
+    text-align: center;
+}
+
+.slider .swiper-button-prev:focus,
+.slider .swiper-button-next:focus {
+    /* even if you can't see it chrome you can see it on mobile device */
+    outline: none;
+}
+
+.slider .swiper-button-prev {
+    left: -0.5rem;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2028%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23787976'%2F%3E%3C%2Fsvg%3E");
+    background-size: 1.125rem 1.75rem;
+}
+
+.slider .swiper-button-next {
+    right: -0.5rem;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2028%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23787976'%2F%3E%3C%2Fsvg%3E");
+    background-size: 1.125rem 1.75rem;
+}
+
+.slider .card {
+    position: relative;
+    border: none;
+    background-color: transparent;
+}
+
+.slider .card-image {
+    width: 6rem;
+    height: 6rem;
+    margin-right: auto;
+    margin-bottom: 0.25rem;
+    margin-left: auto;
+    border-radius: 50%;
+}
+
+.slider .card .card-body {
+    padding-bottom: 0;
+}
+
+.slider .testimonial-text {
+    margin-bottom: 0.625rem;
+}
+
+.slider .testimonial-author {
+    color: #484a46;
+}
+
+/**********************/
+/*     11. Call Me    */
+/**********************/
+.form-1 {
+    padding-top: 6.625rem;    
+    padding-bottom: 5.625rem;    
+    background-color: #153e52;
+}
+
+.form-1 .text-container {
+    margin-bottom: 4rem;
+}
+
+.form-1 .section-title {
+    margin-bottom: 0.5rem;
+}
+
+.form-1 h2 {
+    margin-bottom: 1.375rem;
+    color: #fff;
+}
+
+.form-1 .list-unstyled .fas {
+    color: #ff80ab;
+    font-size: 0.5rem;
+    line-height: 1.375rem;
+}
+
+.form-1 .list-unstyled .media-body {
+    margin-left: 0.625rem;
+}
+
+.form-1 .label-control {
+    color: #fff;
+}
+
+.form-1 .form-control-input,
+.form-1 .form-control-select {
+    border: 1px solid #39728f;
+    background-color: #2a5d77;
+    color: #fff;
+}
+
+.form-1 .form-control-textarea {
+    border: 1px solid #39728f;
+    background-color: #2a5d77;
+    color: #fff;
+}
+
+.form-1 .form-control-input:focus,
+.form-1 .form-control-input:hover,
+.form-1 .form-control-select:focus,
+.form-1 .form-control-select:hover,
+.form-1 .form-control-textarea:focus,
+.form-1 .form-control-textarea:hover {
+    border: 1px solid #fff;
+}
+
+#lmsgSubmit.h3.text-center.tada.animated,
+#lmsgSubmit.h3.text-center {
+    color: #fff;
+}
+
+.form-1 .help-block.with-errors .list-unstyled {
+    color: #dfe5ec;
+}
+
+/************************/
+/*     12. Projects     */
+/************************/
+.filter {
+    padding-top: 6.5rem;
+    padding-bottom: 7rem;
+}
+
+.filter .section-title {
+    margin-bottom: 0.5rem;
+}
+
+.filter h2,
+.filter .section-title {
+    text-align: center;
+}
+
+.filter h2 {
+    margin-bottom: 3.25rem;
+}
+
+.filter .button-group {
+    text-align: center;
+}
+
+.filter .button-group a {
+    display: inline-block;
+    margin-right: 0.1875rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.1875rem;
+    padding: 0.3125rem 1.375rem 0.25rem 1.375rem;
+    border-radius: 0.25rem;
+    background-color: #f1f4f7;
+    color: #7b7e85;
+    font: 700 0.75rem/1.25rem "Montserrat", sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter .button-group a:hover {
+    background-color: #ff80ab;
+    color: #fff;
+}
+
+.filter .button-group a.button.is-checked {
+    background-color: #ff80ab;
+    color: #fff;
+}
+
+.filter .grid {
+    margin-top: 1.25rem;
+    border-radius: 0.375rem;
+}
+
+/* Hover Animation */
+.filter .element-item {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 50%;
+    background-color: #000; /* to hide 1px white margin in IE */
+}
+
+/* 风景图片 */
+.filter .element-item img {
+    max-width: 200%;
+    min-height: 100%;
+    margin: 0;
+    transition: all 0.3s;
+    transform: translate(-24%, 0%);
+}
+
+.element-item {
+    /*box-shadow: 20px 20px 20px #888888;*/
+}
+
+.filter .element-item:hover img {
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+} 
+/* end of hover animation */
+
+.filter .element-item .element-item-overlay { 
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.filter .element-item .element-item-overlay span { 
+    position: absolute;
+    z-index: 3;
+    top: 42%;
+    right: 0;
+    left: 0;
+    color: #fff;
+    font: 700 1.125rem/1.625rem "Montserrat", sans-serif;
+}
+
+/**********************************/
+/*     13. Project Lightboxes     */
+/**********************************/
+.lightbox-basic {
+    position: relative;
+    max-width: 62.5rem;
+    margin: 2.5rem auto;
+    padding: 1.5625rem;
+    border-radius: 0.25rem;
+    background: #fff;
+    text-align: left;
+}
+
+.lightbox-basic img {
+    margin-right: auto;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    border-radius: 0.25rem;
+}
+
+.lightbox-basic .line-heading {
+    width: 3rem;
+    height: 1px;
+    margin-top: 0;
+    margin-bottom: 0.625rem;
+    margin-left: 0;
+    border: none;
+    background-color: #ff80ab;
+}
+
+.lightbox-basic h6 {
+    margin-bottom: 2rem;
+}
+
+.lightbox-basic .testimonial-container {
+    margin-top: 1.75rem;
+    margin-bottom: 2.125rem;
+    padding: 1.125rem 1.5rem 1.125rem 1.5rem;
+    border-radius: 0.25rem;
+    background-color: #fbfbfb;
+}
+
+.lightbox-basic .testimonial-text {
+    margin-bottom: 0.5rem;
+}
+
+.lightbox-basic .testimonial-author {
+    margin-bottom: 0;
+}
+
+.lightbox-basic .btn-solid-reg,
+.lightbox-basic .btn-outline-reg {
+    margin-right: 0.375rem;
+    margin-bottom: 1rem;
+}
+
+.lightbox-basic a.mfp-close.as-button {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-right: 0.5rem;
+    color: #484a46;
+    opacity: 1;
+}
+
+.lightbox-basic a.mfp-close.as-button:hover {
+    color: #f2f2f2;
+}
+
+.lightbox-basic button.mfp-close.x-button {
+    position: absolute;
+    top: -0.375rem;
+    right: -0.375rem;
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+/********************/
+/*     14. Team     */
+/********************/
+.basic-2 {
+    padding-top: 6.375rem;
+    padding-bottom: 3.375rem;
+    background-color: #fbfbfb;
+    text-align: center;
+}
+
+.basic-2 h2 {
+    margin-bottom: 0.75rem;
+}
+
+.basic-2 .team-member {
+    display: inline-block;
+    max-width: 13rem;
+    margin-right: 1.5rem;
+    margin-bottom: 3.5rem;
+    margin-left: 1.5rem;
+}
+
+/* Hover Animation */
+.basic-2 .image-wrapper {
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.basic-2 .image-wrapper img {
+    margin: 0;
+    transition: all 0.3s;
+}
+
+.basic-2 .image-wrapper:hover img {
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+} 
+/* end of hover animation */
+
+.basic-2 .team-member .p-large {
+    margin-bottom: 0.25rem;
+}
+
+.basic-2 .team-member .job-title {
+    margin-bottom: 0.75rem;
+    color: #484a46;
+    font: 700 1rem/1.375rem "Montserrat", sans-serif;
+}
+
+.basic-2 .fa-stack {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 0.125rem;
+    margin-left: 0.125rem;
+}
+
+.basic-2 .fa-stack-1x {
+    font-size: 0.6875rem;
+    line-height: 1.75rem;
+    color: #fff;
+    transition: all 0.2s ease;
+}
+
+.basic-2 .fa-stack:hover .fa-stack-1x {
+    color: #ff80ab;
+}
+
+/*********************/
+/*     15. About     */
+/*********************/
+.counter {
+    padding-top: 6.875rem;
+    padding-bottom: 5.25rem;
+}
+
+.counter .image-container {
+    margin-bottom: 3rem;
+}
+
+.counter .image-container img {
+    border-radius: 0.25rem;
+}
+
+.counter .section-title {
+    margin-bottom: 0.5rem;
+}
+
+.counter h2 {
+    margin-bottom: 1.375rem;
+}
+
+.counter .list-unstyled {
+    margin-bottom: 1.5rem;
+}
+
+.counter .list-unstyled .fas {
+    color: #ff80ab;
+    font-size: 0.5rem;
+    line-height: 1.375rem;
+}
+
+.counter .list-unstyled .media-body {
+    margin-left: 0.625rem;
+}
+
+.counter #counter {
+    text-align: center;
+}
+
+.counter #counter .cell {
+    display: inline-block;
+    width: 9.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.counter #counter .counter-value {
+    display: inline-block;
+    margin-bottom: 0.125rem;
+    color: #ff80ab;
+    font: 700 2.875rem/3.25rem "Montserrat", sans-serif;
+    vertical-align: middle;
+}
+
+.counter #counter .counter-info {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    vertical-align: middle;
+}
+
+/***********************/
+/*     16. Contact     */
+/***********************/
+.form-2 {
+    padding-top: 6.625rem;
+    padding-bottom: 5.625rem;
+    background-color: #fbfbfb;
+}
+
+.form-2 .text-container {
+    margin-bottom: 3rem;
+}
+
+.form-2 .section-title {
+    margin-bottom: 0.5rem;
+ }
+
+.form-2 h2 {
+    margin-bottom: 1.375rem;
+}
+
+.form-2 .list-unstyled {
+    margin-bottom: 2.25rem;
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+
+.form-2 .list-unstyled .fas,
+.form-2 .list-unstyled .fab {
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+    color: #ff80ab;
+}
+
+.form-2 .list-unstyled .fa-phone {
+    vertical-align: 3%;
+}
+
+.form-2 h3 {
+    margin-bottom: 1rem;
+}
+
+.form-2 .fa-stack {
+    margin-right: 0.25rem;
+    margin-bottom: 0.75rem;
+    margin-left: 0.125rem;
+    width: 3.25rem;
+    height: 3.25rem;
+}
+
+.form-2 .fa-stack .hexagon {
+    position: absolute;
+    width: 3.25rem;
+    height: 3.25rem;
+    background: url('http://www.ranmc.cn/images/hexagon-green.svg') center center no-repeat;
+    background-size: 3.25rem 3.25rem;
+    transition: all 0.2s ease;
+}
+
+.form-2 .fa-stack:hover .hexagon {
+    background: url('http://www.ranmc.cn/images/hexagon-white.svg') center center no-repeat;
+    background-size: 3.25rem 3.25rem;
+}
+
+.form-2 .fa-stack-1x {
+    font-size: 1.5rem;
+    line-height: 3.25rem;
+    color: #fff;
+    transition: all 0.2s ease;
+}
+
+.form-2 .fa-stack:hover .fa-stack-1x {
+    color: #ff80ab;
+}
+
+/**********************/
+/*     17. Footer     */
+/**********************/
+.footer .text-container {
+    margin-bottom: 2.25rem;
+}
+
+.footer h4 {
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.footer p,
+.footer ul {
+    font-size: 0.875rem;
+    line-height: 0.9rem;
+}
+
+/*************************/
+/*     18. Copyright     */
+/*************************/
+.copyright {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    background-color: #00bcd4;
+    text-align: center;
+}
+
+.copyright p,
+.copyright a {
+    color: #dfe5ec;
+    text-decoration: none;
+}
+
+a:hover.back-to-top {
+    background-color: #13aa87; 
+}
+
+/***************************/
+/*     20. Extra Pages     */
+/***************************/
+.ex-header {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+    text-align: center;
+    position: relative;
+    /* 确保伪元素在内容下方 */
+    z-index: 1;
+}
+
+.ex-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 设置背景图片 */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                url('https://m.ccw.site/gandi_application/user_assets/a5417dc25fd821159f3e8362ba8e1ff2.jpg');
+    /* 控制背景图片大小 */
+    background-size: cover;
+    /* 控制背景图片位置 */
+    background-position: center bottom;
+    /* 添加模糊效果 */
+    filter: blur(5px);
+    /* 确保伪元素在内容下方 */
+    z-index: -1;
+}
+
+.ex-header h1 {
+    color: #fff;
+}
+
+.ex-basic-1 {
+    padding-top: 2rem;
+    padding-bottom: 0.875rem;
+    background-color: #fbfbfb;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari 兼容 */
+}
+
+.ex-basic-1 .breadcrumbs {
+    margin-bottom: 1rem;
+}
+
+.ex-basic-1 .breadcrumbs .fa {
+    margin-right: 0.5rem;
+    margin-left: 0.625rem;
+}
+
+.ex-basic-2 {
+    padding-top: 4.75rem;
+    padding-bottom: 4rem;
+}
+
+.ex-basic-2 h3 {
+    margin-bottom: 1rem;
+}
+
+.ex-basic-2 .text-container {
+    margin-bottom: 3.625rem;
+}
+
+.ex-basic-2 .text-container.last {
+    margin-bottom: 0;
+}
+
+.ex-basic-2 .list-unstyled .fas {
+    color: #ff80ab;
+    font-size: 0.5rem;
+    line-height: 1.375rem;
+}
+
+.ex-basic-2 .list-unstyled .media-body {
+    margin-left: 0.625rem;
+}
+
+.ex-basic-2 .form-container {
+    margin-top: 2.5rem;
+}
+
+.ex-basic-2 .btn-outline-reg {
+    margin-top: 1.75rem;
+}
