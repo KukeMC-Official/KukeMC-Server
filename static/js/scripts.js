@@ -249,6 +249,16 @@
                     }
                 }
             }
+        } else {
+            // 对于非主页，监听滚动事件以保持当前页面的导航高亮
+            window.addEventListener('scroll', function() {
+                // 检查当前激活的导航项是否仍然存在
+                const activeLink = document.querySelector('.nav-link.active');
+                if (!activeLink) {
+                    // 如果没有激活的导航项，则重新设置当前页面的导航项为激活状态
+                    updateNavHighlight();
+                }
+            });
         }
     })
     .catch(error => {
