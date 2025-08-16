@@ -1,0 +1,278 @@
+/* Template: Aria - Business HTML Landing Page Template
+   Author: Inovatik
+   Created: Jul 2019
+   Description: Navigation CSS file
+*/
+
+/**************************/
+/*     03. Navigation     */
+/**************************/
+.navbar-custom {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    background-color: #000000d4;
+    box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
+    font: 600 0.875rem/0.875rem "Open Sans", sans-serif;
+    transition: all 0.2s;
+}
+
+.navbar-custom .navbar-brand {
+    font-size: 0;
+}
+
+/*服务器Logo*/
+.navbar-custom .navbar-brand.logo-image img {
+    height: 4rem;
+    -webkit-backface-visibility: hidden;
+}
+
+.navbar-custom .navbar-brand.logo-text {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    font: 700 2.25rem/1.5rem "Montserrat", sans-serif;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-custom .navbar-nav {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.navbar-custom .nav-item .nav-link {
+    padding: 0.625rem 0.75rem 0.625rem 0.75rem;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.navbar-custom .nav-item .nav-link:hover,
+.navbar-custom .nav-item .nav-link.active,
+.navbar-custom .nav-item .nav-link[href="{window.location.pathname}"],
+.navbar-custom .nav-item .nav-link[href="{window.location.pathname.replace('.html', '')}"] {
+    color: #ff80ab !important;
+}
+
+/* Dropdown Menu */
+.navbar-custom .dropdown:hover > .dropdown-menu {
+    display: block; /* this makes the dropdown menu stay open while hovering it */
+    min-width: auto;
+    animation: fadeDropdown 0.2s; /* required for the fade animation */
+}
+
+@keyframes fadeDropdown {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.navbar-custom .dropdown-toggle:focus { /* removes dropdown outline on focus  */
+    outline: 0;
+}
+
+.navbar-custom .dropdown-menu {
+    margin-top: 0;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #000000d4;
+}
+
+.navbar-custom .dropdown-item {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-custom .dropdown-item:hover {
+    background-color: #000000d4;
+}
+
+.navbar-custom .dropdown-item .item-text {
+    font: 600 0.875rem/0.875rem "Open Sans", sans-serif;
+}
+
+.navbar-custom .dropdown-item:hover .item-text {
+    color: #ff80ab;
+}
+
+.navbar-custom .dropdown-items-divide-hr {
+    width: 100%;
+    height: 1px;
+    margin: 0.75rem auto 0.75rem auto;
+    border: none;
+    background-color: #b5bcc4;
+    opacity: 0.2;
+}
+/* end of dropdown menu */
+
+.navbar-custom .social-icons {
+    display: none;
+}
+
+.navbar-custom .navbar-toggler {
+    border: none;
+    color: #fff;
+    background: url('../image/sUwLKx.png');
+    background-size: cover;
+}
+
+.navbar-custom button[aria-expanded='false'] .navbar-toggler-awesome.fas.fa-times{
+    display: none;
+}
+
+.navbar-custom button[aria-expanded='false'] .navbar-toggler-awesome.fas.fa-bars{
+    display: inline-block;
+}
+
+.navbar-custom button[aria-expanded='true'] .navbar-toggler-awesome.fas.fa-bars{
+    display: none;
+}
+
+.navbar-custom button[aria-expanded='true'] .navbar-toggler-awesome.fas.fa-times{
+    display: inline-block;
+    margin-right: 0.125rem;
+}
+
+/* Navigation Media Queries */
+@media (min-width: 768px) {
+    /* Navigation */
+    .navbar-custom {
+        padding: 2.125rem 1.5rem 2.125rem 2rem;
+        box-shadow: none;
+        background: transparent;
+    }
+    
+    .navbar-custom .navbar-brand.logo-text {
+        color: #fff;
+    }
+
+    .navbar-custom .navbar-nav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar-custom .nav-item .nav-link {
+        padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+    }
+    
+    .navbar-custom .nav-item .nav-link:hover,
+    .navbar-custom .nav-item .nav-link.active {
+        color: #ff80ab;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        padding: 0.375rem 1.5rem 0.375rem 2rem;
+        box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
+        background-color: #000000d4;
+        backdrop-filter: blur(3px);
+    }
+
+    .navbar-custom.top-nav-collapse .navbar-brand.logo-text {
+        color: #fff;
+    }
+
+    .navbar-custom.top-nav-collapse .nav-item .nav-link {
+        color: #fff;
+    }
+    
+    .navbar-custom .nav-item .nav-link.active {
+        color: #ff80ab !important;
+    }
+
+    .navbar-custom.top-nav-collapse .nav-item .nav-link:hover {
+        color: #ff80ab;
+    }
+
+    .navbar-custom .dropdown-menu {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-top: 0.75rem solid rgba(0, 0, 0, 0);
+        border-radius: 0.25rem;
+        box-shadow: 0 0.25rem 0.375rem 0 rgba(0, 0, 0, 0.03);
+    }
+    
+    .navbar-custom.top-nav-collapse .dropdown-menu {
+        border-top: 0.125rem solid rgba(0, 0, 0, 0);
+    }
+
+    .navbar-custom .dropdown-item {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .navbar-custom .dropdown-items-divide-hr {
+        width: 84%;
+    }
+    /* end of navigation */
+}
+
+@media (min-width: 992px) {
+    /* Navigation */
+    .navbar-custom .social-icons {
+        display: block;
+        margin-left: 0.5rem;
+    }
+
+    .navbar-custom .fa-stack {
+        margin-left: 0.375rem;
+        font-size: 0.8125rem;
+    }
+
+    .navbar-custom .fa-stack .hexagon {
+        width: 1.625rem;
+        height: 1.625rem;
+        position: absolute;
+        background: url('http://www.ranmc.cn/images/hexagon-green.svg') center center no-repeat;
+        background-size: 1.625rem 1.625rem;
+        transition: all 0.2s ease;
+    }
+
+    .navbar-custom .fa-stack:hover .hexagon {
+        background: url('http://www.ranmc.cn/images/hexagon-white.svg') center center no-repeat;
+        background-size: 1.625rem 1.625rem;
+    }
+    
+    .navbar-custom .fa-stack-1x {
+        font-size: 0.6875rem;
+        line-height: 1.625rem;
+        color: #fff;
+        transition: all 0.2s ease;
+    }
+
+    .navbar-custom .fa-stack:hover .fa-stack-1x {
+        color: #ff80ab;
+    }
+    /* end of navigation */
+}
+
+@media (min-width: 1200px) {
+    /* Navigation */
+    .navbar-custom {
+        padding-right: 5rem;
+        padding-left: 5rem;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        padding-right: 5rem;
+        padding-left: 5rem;
+    }
+    /* end of navigation */
+}
+
+@media (min-width: 1600px) {
+    /* Navigation */
+    .navbar-custom {
+        padding-right: 12rem;
+        padding-left: 12rem;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        padding-right: 12rem;
+        padding-left: 12rem;
+    }
+    /* end of navigation */
+}

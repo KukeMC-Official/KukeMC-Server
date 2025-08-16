@@ -202,6 +202,11 @@
                         if (visibleHeight > elementHeight / 2) {
                             currentSection = section.link;
                         }
+                        // 特殊处理：如果已经滚动到页面底部且当前元素是最后一个元素
+                        else if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 5 && 
+                                 section.id === sections[sections.length - 1].id) {
+                            currentSection = section.link;
+                        }
                     }
                 }
                 
@@ -233,9 +238,27 @@
                                 link.classList.add('active');
                             }
                         });
+                    } else {
+                        // 当没有匹配到区域且不在页面顶部时，高亮最后一个可见区域
+                        const lastSection = 'index.html#picture';
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            if (link.getAttribute('href') === lastSection) {
+                                link.classList.add('active');
+                            }
+                        });
                     }
                 }
             }
+        } else {
+            // 对于非主页，监听滚动事件以保持当前页面的导航高亮
+            window.addEventListener('scroll', function() {
+                // 检查当前激活的导航项是否仍然存在
+                const activeLink = document.querySelector('.nav-link.active');
+                if (!activeLink) {
+                    // 如果没有激活的导航项，则重新设置当前页面的导航项为激活状态
+                    updateNavHighlight();
+                }
+            });
         }
     })
     .catch(error => {

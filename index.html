@@ -32,14 +32,21 @@ s.parentNode.insertBefore(el, s);
     <meta name="description" content="一群热爱游戏的方块人组成的多玩法群组服" />
     
     <!-- Styles -->
+     
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <link href="static/css/magnific-popup.css" rel="stylesheet">
-	<link href="static/css/styles.css" rel="stylesheet">
-	<link href="static/css/animations.css" rel="stylesheet">
+    <link href="static/css/base.css" rel="stylesheet">
+    <link href="static/css/components.css" rel="stylesheet">
+    <link href="static/css/layout.css" rel="stylesheet">
+    <link href="static/css/navigation.css" rel="stylesheet">
+    <link href="static/css/utilities.css" rel="stylesheet">
+    <link href="static/css/responsive.css" rel="stylesheet">
+    <link href="static/css/animations.css" rel="stylesheet">
     <link href="static/css/server-list.css" rel="stylesheet">
     <script src="https://m.ccw.site/gandi_application/user_assets/afe3c02b16ebc00057ded67b4c5673b0.js"></script>
-	
-	<!-- Favicon  -->
+    <link href="static/css/no_refresh_pages.css" rel="stylesheet">
+
+    <!-- Favicon  -->
     <link rel="icon" href="https://m.ccw.site/gandi_application/user_assets/2a6bb37880317d2bb5525ab560618e04.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
@@ -58,6 +65,7 @@ s.parentNode.insertBefore(el, s);
     <div id="navbar"></div>
     
     <!-- end of navbar -->
+     <main id="content-container" class="content-transition content-visible">
     <!-- Header -->
     <header id="header" class="header">
         <div class="header-content">
@@ -168,8 +176,7 @@ s.parentNode.insertBefore(el, s);
                     <div class="server-content">
                         <h3>避暑山庄</h3>
                         <p>*友情链接* 耗时三年打造的监狱风云 进群916175816了解更多 </p>
-                        <span class="server-version">支持版本: 1.16.5 </span>
-                        <!-- Mrkun114514:为什么服务器说截止到1.16.5 -->
+                        <span class="server-version">支持版本: 1.16.5 - 1.21.8</span>
                     </div>
                 </div>
     
@@ -253,9 +260,7 @@ s.parentNode.insertBefore(el, s);
                     <div class="server-content">
                         <h3>搭路练习</h3>
                         <p>专为PVP玩家设计的搭路练习服务器，提供各种难度的搭路挑战，帮助你提升PVP技巧。</p>
-                        <span class="server-version">支持版本: 1.8 - 1.21.8</span>
-                        <!-- Mrkun114514:为什么我的1.21.8不支持这个？必须改！ -->
-                         <!-- Mrkun114514：算了快修了我还是给你改回来吧-->
+                        <span class="server-version">支持版本: 1.8.9 - 1.21.8</span>
                     </div>
                 </div>
 
@@ -496,13 +501,7 @@ s.parentNode.insertBefore(el, s);
             <!-- Accordion -->
             <div class="accordion-container" id="accordionOne">
                 <h2>丰富的玩法</h2>
-                <p>KukeMC Server 截止目前(<!-- Mrkun114514:为了同步日期，于是使用AI修改这里--><script>
-    document.write(
-      new Date().getFullYear() + '/' + 
-      String(new Date().getMonth() + 1).padStart(2, '0') + '/' +
-      String(new Date().getDate()).padStart(2, '0')
-    );
-  </script><!-- Mrkun114514:改完了 -->)一共拥超过十二台服务器，其中包括：趣味生存、避暑山庄、粘液空岛、职业战争、原版生电、起床战争、机械动力、僵尸末日、原版生存(1.12.2 无政府生存)、无尽贪婪、猎人游戏、搭路练习 等不下十二种Minecraft服务器。<p>
+                <p>KukeMC Server 截止目前(2025/06/04)一共拥超过十二台服务器，其中包括：趣味生存、避暑山庄、粘液空岛、职业战争、原版生电、起床战争、机械动力、僵尸末日、原版生存(1.12.2 无政府生存)、无尽贪婪、猎人游戏、搭路练习 等不下十二种Minecraft服务器。<p>
             </p></div> <!-- end of accordion-container -->
             <!-- end of accordion -->
 
@@ -523,7 +522,7 @@ s.parentNode.insertBefore(el, s);
         </div><!-- end of area-1 on same line and no space between comments to eliminate margin white space --><div class="area-2"></div> <!-- end of area-2 -->
     </div> <!-- end of tabs -->
     <!-- end of details 2 -->
-
+</main>
     <div id="footer"></div>
     </div> <!-- end of copyright -->
 
@@ -537,6 +536,6 @@ s.parentNode.insertBefore(el, s);
     <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
     <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
     <script src="static/js/server-list.js"></script>
-</body>
+    <script src="static/js/no_refresh_pages.js"></script>
 </html>
 
