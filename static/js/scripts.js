@@ -12,6 +12,9 @@
         '/  \\  _  |_ .  _  . _   _  _|   |_       |__)  _ |_  _  _ \n' +
         '\\__/ |_) |_ | ||| | /_ (- (_|   |_) \\/   |    (- |_ (- |  \n' +
         '     |                              /                     ');
+    
+    // Test if this script is loaded
+    console.log('scripts.js loaded and executed');
 
     // 获取古诗
 
@@ -91,7 +94,7 @@
                         
                         const linkObj = new URL(link.href, linkBase);
                         let linkPath = linkObj.pathname;
-        
+
                         // 特殊处理：如果 href 是相对路径或 hash，pathname 可能为空
                         if (!linkPath && link.getAttribute('href').startsWith('#')) {
                             // 对于锚点链接，在主页时应该高亮第一个锚点链接（首页）
@@ -99,9 +102,14 @@
                                 link.classList.add('active');
                                 matched = true;
                             }
+                            // 处理页面内的锚点链接
+                            else if (window.location.hash && link.getAttribute('href') === window.location.hash) {
+                                link.classList.add('active');
+                                matched = true;
+                            }
                             return;
                         }
-        
+
                         // 规范化导航链接路径
                         const normalizedLinkPath = linkPath
                             .replace(/index\.html$/i, '') // 移除 index.html
@@ -109,7 +117,7 @@
                             .replace(/\.html$/i, '')      // 移除 .html
                             .replace(/\/$/, '')           // 移除末尾斜杠
                             .replace(/^\//, '');          // 移除前导斜杠
-        
+
                         // 比较两个路径是否匹配
                         if (normalizedLinkPath === normalizedCurrentPath) {
                             link.classList.add('active');
@@ -119,14 +127,30 @@
                         console.warn('Invalid URL in nav link:', link.href);
                     }
                 });
-                
+
                 // 如果没有匹配的导航项，尝试使用更宽松的匹配方式
                 if (!matched) {
                     const currentPage = normalizedCurrentPath.split('/').pop();
                     navLinks.forEach(link => {
                         const linkHref = link.getAttribute('href');
-                        if (linkHref && linkHref.includes(currentPage)) {
-                            link.classList.add('active');
+                        // 检查链接是否包含当前页面和hash
+                        if (linkHref) {
+                            // 处理锚点链接
+                            if (linkHref.startsWith('#')) {
+                                if (linkHref === window.location.hash) {
+                                    link.classList.add('active');
+                                }
+                            } 
+                            // 处理相对路径链接
+                            else if (linkHref.includes(currentPage) && 
+                                     (linkHref === `index.html${window.location.hash}` || 
+                                      (window.location.hash && linkHref.endsWith(window.location.hash)))) {
+                                link.classList.add('active');
+                            }
+                            // 处理包含当前页面的链接
+                            else if (linkHref.includes(currentPage)) {
+                                link.classList.add('active');
+                            }
                         }
                     });
                 }
@@ -153,6 +177,31 @@
 
         // 监听 hashchange 事件（当用户点击锚点链接时触发）
         window.addEventListener('hashchange', updateNavHighlight);
+        
+        // 添加对导航链接的点击事件处理
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('.nav-link');
+            if (target) {
+                const href = target.getAttribute('href');
+                // 处理锚点链接
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    // 更新URL的hash部分
+                    if (history.pushState) {
+                        history.pushState(null, null, href);
+                    } else {
+                        window.location.hash = href;
+                    }
+                    // 手动触发滚动到目标元素
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    // 更新导航高亮
+                    updateNavHighlight();
+                }
+            }
+        });
         
         // 监听页面加载完成事件
         window.addEventListener('load', function() {
@@ -234,7 +283,8 @@
                     const hash = window.location.hash;
                     if (hash) {
                         document.querySelectorAll('.nav-link').forEach(link => {
-                            if (link.getAttribute('href') === `index.html${hash}`) {
+                            if (link.getAttribute('href') === `index.html${hash}` || 
+                               (link.getAttribute('href') === hash)) {
                                 link.classList.add('active');
                             }
                         });
@@ -348,6 +398,25 @@
 					$('html, body').stop().animate({
 						scrollTop: targetElement.offset().top
 					}, 600);
+					
+					// 更新URL的hash部分但不触发默认跳转
+					if (history.pushState) {
+						history.pushState(null, null, href);
+					} else {
+						window.location.hash = href.substring(1);
+					}
+					
+					event.preventDefault();
+					return;
+				}
+				// 如果找不到对应元素，但链接格式正确，仍然更新URL
+				else {
+					// 更新URL的hash部分但不触发默认跳转
+					if (history.pushState) {
+						history.pushState(null, null, href);
+					} else {
+						window.location.hash = href.substring(1);
+					}
 					event.preventDefault();
 					return;
 				}
@@ -620,5 +689,4 @@
 	$(".button, a, button").mouseup(function() {
 		$(this).blur();
 	});
-
 })(jQuery);

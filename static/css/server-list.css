@@ -1,12 +1,37 @@
 .server-list {
     padding: 4rem 0;
     background: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+}
+
+.server-list::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: rotate(30deg);
+    animation: shine 8s infinite linear;
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(30deg) translate(-100px, -100px);
+    }
+    100% {
+        transform: rotate(30deg) translate(100px, 100px);
+    }
 }
 
 .server-list-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .server-list-title {
@@ -14,6 +39,24 @@
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #2c3e50;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.6),
+                 0 0 30px rgba(255, 255, 255, 0.4);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+                     0 0 10px rgba(255, 255, 255, 0.6),
+                     0 0 15px rgba(255, 255, 255, 0.4);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                     0 0 20px rgba(255, 255, 255, 0.6),
+                     0 0 30px rgba(255, 255, 255, 0.4),
+                     0 0 40px rgba(255, 255, 255, 0.2);
+    }
 }
 
 .server-list-subtitle {
@@ -33,26 +76,51 @@
 }
 
 .category-btn {
-    padding: 0.5rem 1.5rem;
-    background: #e9ecef;
-    border: none;
+    padding: 0.7rem 1.8rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     cursor: pointer;
     font-weight: 500;
-    transition: all 0.3s ease;
+    color: #2c3e50;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transition: 0.5s;
+}
+
+.category-btn:hover::before {
+    left: 100%;
 }
 
 .category-btn.active {
-    background: #3498db;
+    background: linear-gradient(45deg, #3498db, #2c3e50);
     color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+    transform: translateY(-2px);
 }
 
 .category-btn:hover {
-    background: #d1d7dc;
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .category-btn.active:hover {
-    background: #2980b9;
+    background: linear-gradient(45deg, #2980b9, #1a2530);
 }
 
 .server-grid {
@@ -63,43 +131,89 @@
 }
 
 .server-item {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .server-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 1);
 }
 
 .server-image {
     width: 100%;
     height: 200px;
     overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+.server-item:hover .server-image {
+    transform: scale(1.05);
 }
 
 .server-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
 }
 
 .server-content {
     padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.server-item:hover .server-content {
+    transform: translateY(-3px);
 }
 
 .server-content h3 {
     font-size: 1.5rem;
     color: #2c3e50;
     margin-bottom: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.server-item:hover .server-content h3 {
+    color: #3498db;
+}
+
+.server-content h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(45deg, #3498db, #2c3e50);
+    margin-top: 8px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.server-item:hover .server-content h3::after {
+    width: 70px;
+    background: linear-gradient(45deg, #51cbce, #3498db);
 }
 
 .server-content p {
     color: #666;
     margin-bottom: 1rem;
     line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.server-item:hover .server-content p {
+    color: #2c3e50;
 }
 
 .server-version {
@@ -109,6 +223,20 @@
     border-radius: 20px;
     font-size: 0.9rem;
     color: #666;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.server-item:hover .server-version {
+    background: #3498db;
+    color: white;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.server-version:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
 }
 
 .join-community {
@@ -130,16 +258,35 @@
 .join-button {
     display: inline-block;
     padding: 1rem 2.5rem;
-    background: #3498db;
+    background: linear-gradient(45deg, #3498db, #2c3e50);
     color: white;
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.join-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.5s;
+}
+
+.join-button:hover::before {
+    left: 100%;
 }
 
 .join-button:hover {
-    background: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
 }
 
 @media (max-width: 768px) {
@@ -149,5 +296,9 @@
     
     .server-list-title {
         font-size: 2rem;
+    }
+    
+    .server-item {
+        margin: 0 1rem;
     }
 }
