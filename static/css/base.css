@@ -103,3 +103,28 @@ strong {
     color: #ff80ab;
     font: 500 0.8125rem/1.125rem "Montserrat", sans-serif;
 }
+
+/* Animation Properties */
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
+
+/* Morphext Rotating Text Styles */
+#js-rotating {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Additional custom styles for rotating text */
+.rotating-text {
+  display: inline-block;
+}
+
+/* Header Text Styles */
+.header-text {
+  margin: 0;
+  padding: 0;
+}
