@@ -3,27 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryButtons = document.querySelectorAll('.category-btn');
     const serverItems = document.querySelectorAll('.server-item');
     
-    // 添加动画效果到服务器项
-    function animateItems() {
-        serverItems.forEach((item, index) => {
-            // 添加延迟显示效果
-            setTimeout(() => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                
-                // 触发重排
-                void item.offsetWidth;
-                
-                // 显示元素
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, index * 100);
+    // 检查元素是否在视口中
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // 显示在视口中的元素
+    function showItemsInViewport() {
+        serverItems.forEach((item) => {
+            if (isInViewport(item)) {
+                item.classList.add('show');
+            }
         });
     }
     
-    // 初始动画
-    animateItems();
+    // 页面加载时检查一次
+    showItemsInViewport();
+    
+    // 滚动时检查
+    window.addEventListener('scroll', showItemsInViewport);
     
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
                 item.style.opacity = '0';
                 item.style.transform = 'scale(0.9)';
+                item.classList.remove('show'); // 移除show类以重置动画
             });
             
             // 等待动画完成后重新筛选
@@ -51,11 +54,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         setTimeout(() => {
                             item.style.opacity = '1';
                             item.style.transform = 'scale(1)';
+                            item.classList.add('show'); // 添加show类触发动画
                         }, 50);
                     } else {
                         item.style.display = 'none';
                     }
                 });
+                
+                // 重新检查视口中的元素
+                showItemsInViewport();
             }, 300);
         });
     });

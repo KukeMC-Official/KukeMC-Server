@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3>${image.title}</h3>
                     <hr class="line-heading">
                     <p>${image.description}</p>
-                    <a class="btn-outline-reg mfp-close as-button" href="#picture">返回</a> 
+                    <a class="btn-outline-reg mfp-close as-button">返回</a> 
                 </div>
             </div>
         `;

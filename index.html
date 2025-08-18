@@ -96,37 +96,78 @@ s.parentNode.insertBefore(el, s);
 
 
     <!-- Intro -->
-    <div id="info" class="basic-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="text-container">
-                        <h2>KukeMC Server 欢迎您</h2>
-                        <p class="server-intro">
-                            这是一个温馨和谐的多玩法群组服务器，<br>提供了稳定流畅的体验。自从2023开服以来，
-                            我们努力创建一个环境良好、更公平公正的游戏氛围，和玩家们一起度过了很多愉快的时光。<br>
-                            在这里的日子将会是你值得回忆的美好。
-                        </p>
-                        <p class="server-promise">
-                            我们保证不做影响平衡、破坏公平的行为。<br>欢迎玩家提出意见或者举报违规行为，<br>
-                            请大家自觉遵守游戏规则。
-                        </p>
-                        <p class="testimonial-text" id="poem-text"></p>
-                        <font color="#484a46"><p id="poem-author" style="font-weight: bold"></p></font>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-7">
-                    <div class="image-container">
-                        <img class="img-fluid" src="https://m.ccw.site/gandi_application/user_assets/a5417dc25fd821159f3e8362ba8e1ff2.jpg" alt="alternative"> <!-- sunset 图片 -->
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-1 -->
+    <div id="info" class="basic-1 welcome-section">
+        <div class="welcome-container">
+            <div class="welcome-content">
+                <div class="welcome-text-container">
+                    <h2>KukeMC Server 欢迎您</h2>
+                    <p class="server-intro">
+                        这是一个温馨和谐的多玩法群组服务器，<br>提供了稳定流畅的体验。自从2023开服以来，
+                        我们努力创建一个环境良好、更公平公正的游戏氛围，和玩家们一起度过了很多愉快的时光。<br>
+                        在这里的日子将会是你值得回忆的美好。
+                    </p>
+                    <p class="server-promise">
+                        我们保证不做影响平衡、破坏公平的行为。<br>欢迎玩家提出意见或者举报违规行为，<br>
+                        请大家自觉遵守游戏规则。
+                    </p>
+                    <p class="testimonial-text" id="poem-text"></p>
+                    <p id="poem-author" class="poem-author"></p>
+                </div> <!-- end of welcome-text-container -->
+                <div class="welcome-image-container">
+                    <img class="img-fluid" src="https://m.ccw.site/gandi_application/user_assets/a5417dc25fd821159f3e8362ba8e1ff2.jpg" alt="sunset image"> <!-- sunset 图片 -->
+                </div> <!-- end of welcome-image-container -->
+            </div> <!-- end of welcome-content -->
+        </div> <!-- end of welcome-container -->
+    </div> <!-- end of welcome-section -->
     <!-- end of intro -->
     
     <!-- 服务器列表展示区 -->
     <section id="list" class="server-list">
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            
+            <!-- 添加浮动圆环 -->
+            <div class="floating-ring ring-1"></div>
+            <div class="floating-ring ring-2"></div>
+            <div class="floating-ring ring-3"></div>
+            <div class="floating-ring ring-4"></div>
+            <div class="floating-ring ring-5"></div>
+            <div class="floating-ring ring-6"></div>
+            <div class="floating-ring ring-7"></div>
+            <div class="floating-ring ring-8"></div>
+            
+            <!-- 添加脉冲圆点 -->
+            <div class="pulse-dot dot-1"></div>
+            <div class="pulse-dot dot-2"></div>
+            <div class="pulse-dot dot-3"></div>
+            <div class="pulse-dot dot-4"></div>
+            <div class="pulse-dot dot-5"></div>
+            <div class="pulse-dot dot-6"></div>
+            
+            <!-- 添加流星效果 -->
+            <div class="meteor"></div>
+            <div class="meteor"></div>
+            <div class="meteor"></div>
+            <div class="meteor"></div>
+            
+        </div>
         <div class="server-list-container">
             <h2 class="server-list-title">服务器列表</h2>
             <p class="server-list-subtitle">丰富多样的游戏玩法 - 都是我们的服务器！</p>
@@ -339,7 +380,7 @@ s.parentNode.insertBefore(el, s);
                     <div class="feature-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#51CBEE" class="bi bi-server" viewBox="0 0 16 16">
                             <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
-                            <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
+                            <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.51 6.51 0 0 1-1.458-.79z"/>
                             <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
                         </svg>
                     </div>

@@ -105,6 +105,157 @@
     padding-bottom: 3rem;
 }
 
+/* 深色主题欢迎区域样式 */
+.welcome-section {
+    padding: 6.5rem 0 4rem;
+    background: linear-gradient(135deg, #1e2a3a, #2c3e50);
+    position: relative;
+    overflow: hidden;
+    color: #e0e0e0;
+}
+
+.welcome-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #00ccff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(0, 200, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #00ffcc, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(100, 255, 200, 0.6), transparent),
+        radial-gradient(2px 2px at 100px 120px, rgba(0, 150, 255, 0.7), transparent);
+    background-size: 200px 150px, 250px 200px, 180px 150px, 220px 180px, 250px 250px;
+    animation: sparkle 5s linear infinite;
+    z-index: 0;
+}
+
+.welcome-section::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        linear-gradient(45deg, transparent 40%, rgba(0, 150, 255, 0.1) 45%, rgba(0, 150, 255, 0.1) 55%, transparent 60%),
+        linear-gradient(135deg, transparent 40%, rgba(0, 200, 255, 0.1) 45%, rgba(0, 200, 255, 0.1) 55%, transparent 60%);
+    animation: beamMove 10s linear infinite;
+    z-index: 0;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-150px);
+    }
+}
+
+@keyframes beamMove {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.welcome-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.welcome-text-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.welcome-text-container h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.welcome-text-container p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.server-intro {
+    font-size: 1.1rem;
+}
+
+.server-promise {
+    background: rgba(30, 40, 55, 0.8);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(100, 180, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #64b4ff;
+    margin-top: 1rem;
+}
+
+.poem-author {
+    font-weight: bold;
+    color: #64b4ff;
+    text-align: right;
+    font-size: 1rem;
+}
+
+.welcome-image-container {
+    flex: 1;
+    min-width: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.welcome-image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.welcome-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+    border-radius: 10px;
+}
+
+.welcome-image-container:hover img {
+    transform: scale(1.05);
+}
+
 .basic-1 .text-container {
     margin-bottom: 3rem;
 }
