@@ -1,0 +1,144 @@
+/* 签到者联盟容器样式 */
+.signin-alliance-container {
+    background: rgba(30, 30, 30, 0.7);
+    padding: 30px;
+    margin: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 每日签到区域 */
+.daily-checkin {
+    padding: 20px;
+    background: rgba(40, 40, 40, 0.5);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.daily-checkin h3 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+#checkinBtn {
+    margin-bottom: 15px;
+    background-color: #39ad66;
+    border-color: #39ad66;
+}
+
+#checkinBtn:hover {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.status-text {
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+/* 状态统计区域 */
+.user-stats {
+    padding: 20px;
+    background: rgba(40, 40, 40, 0.5);
+    border-radius: 10px;
+}
+
+.user-stats h3 {
+    color: #ffffff;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(80, 80, 80, 0.5);
+}
+
+.exp-section, .coin-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background: rgba(50, 50, 50, 0.3);
+    border-radius: 8px;
+}
+
+.exp-section h4, .coin-section h4 {
+    color: #ff80ab;
+    margin-bottom: 15px;
+}
+
+.data-placeholder {
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+/* MC风格经验条 */
+.mc-exp-container {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.mc-exp-bar {
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #555;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.mc-exp-fill {
+    height: 100%;
+    width: 0%; /* 初始为空 */
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    transition: width 0.5s ease;
+}
+
+.mc-level-indicator {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* 金币操作按钮 */
+.coin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-solid-sm {
+    padding: 8px 16px;
+    font-size: 0.9em;
+    background-color: #3498db;
+    border-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-solid-sm:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+#exchangeTitle {
+    background-color: #9b59b6;
+    border-color: #9b59b6;
+}
+
+#exchangeTitle:hover {
+    background-color: #8e44ad;
+    border-color: #8e44ad;
+}

@@ -1,0 +1,50 @@
+/* 页面切换过渡动画 */
+.content-transition {
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* 内容加载状态 */
+.content-loading {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* 内容显示状态 */
+.content-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 加载指示器样式 */
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.loading-indicator.active {
+    display: block;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #eee;
+    border-top: 3px solid #4a00e0;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/*AI真是太好用了，你知道吗！*/
